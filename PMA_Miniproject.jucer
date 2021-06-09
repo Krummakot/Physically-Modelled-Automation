@@ -9,8 +9,8 @@
             file="Source/VisualString.cpp"/>
       <FILE id="feH8Qz" name="VisualString.hpp" compile="0" resource="0"
             file="Source/VisualString.hpp"/>
-      <FILE id="YMYNgv" name="AutoString.cpp" compile="1" resource="0" file="Source/AutoString.cpp"/>
-      <FILE id="mzeCZz" name="AutoString.hpp" compile="0" resource="0" file="Source/AutoString.hpp"/>
+      <FILE id="YMYNgv" name="SoundString.cpp" compile="1" resource="0" file="Source/SoundString.cpp"/>
+      <FILE id="mzeCZz" name="SoundString.hpp" compile="0" resource="0" file="Source/SoundString.hpp"/>
       <FILE id="OYf1Zc" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="sHtLNJ" name="PluginProcessor.h" compile="0" resource="0"

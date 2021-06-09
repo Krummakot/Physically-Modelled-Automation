@@ -98,7 +98,6 @@ void VisualString::setStringLength(double newLength) {
 
 void VisualString::updateCoefficients() {
     c = sqrt(tension/(p*A));
-    kappa = sqrt((E*I)/p*A);
     h = sqrt((c * c * k * k + 4.0 * s1 * k
              + sqrt (pow (c * c * k * k + 4.0 * s1 * k, 2.0)
                     + 16.0 * kappa * kappa * k * k)) * 0.5);

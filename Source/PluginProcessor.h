@@ -9,9 +9,9 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "AutoString.hpp"
+#include "SoundString.hpp"
 #include "VisualString.hpp"
-#include "StiffString.h"
+
 
 //==============================================================================
 /**
@@ -92,7 +92,7 @@ public:
     AudioParameterFloat* outPutParam;
     AudioParameterFloat* pluckLocParam;
     VisualString* newVisualString;
-    std::unique_ptr<AutoString> myString;
+    std::unique_ptr<SoundString> myString;
     std::unique_ptr<VisualString> myVisualString;
 
 private:

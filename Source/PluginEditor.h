@@ -11,7 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "VisualString.hpp"
-#include "AutoString.hpp"
+#include "SoundString.hpp"
 
 //==============================================================================
 /**
@@ -37,13 +37,11 @@ public:
     
     void setPluckLoc(float pluckLocParam);
     
-//    bool mousePressed, playOnce;
     bool paintString = false;
     int noCalls = 0;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
+
     PMA_MiniprojectAudioProcessor& audioProcessor;
     
     

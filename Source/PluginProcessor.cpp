@@ -102,30 +102,31 @@ void PMA_MiniprojectAudioProcessor::prepareToPlay (double sampleRate, int sample
     // initialisation that you need..
     NamedValueSet parameters, parameters2;
 
-    double r = 0.000254/2;
+    double r = 0.000127;
     
+    // SoundString
     parameters.set("stringLength", 1);
     parameters.set("tension", 105.f);
     parameters.set("p", 7860);
     parameters.set("A", double_Pi * (r*r));
-    parameters.set("E", 2000000000);
+    parameters.set("E", 2.1000e+11);
     parameters.set("I", double_Pi * r * r * r * r * 0.25);
-    parameters.set("s0", 1.f);                               // Frequency-independent damping
-    parameters.set("s1",  0.005);                              // Frequency-dependent damping
+    parameters.set("s0", 1.f);
+    parameters.set("s1",  0.005);
     
-    
+    // VisualString
     parameters2.set("stringLength", 1);
     parameters2.set("tension", 105.f);
     parameters2.set("p", 7860);
     parameters2.set("A", double_Pi * (r*r));
-    parameters2.set("E", 2000000000);
+    parameters2.set("E", 2.1000e+11);
     parameters2.set("I", double_Pi * r * r * r * r * 0.25);
-    parameters2.set("s0", 1.f);                               // Frequency-independent damping
-    parameters2.set("s1",  0.005);                              // Frequency-dependent damping
+    parameters2.set("s0", 1.f);
+    parameters2.set("s1",  0.005);
     
     fs = getSampleRate();
     
-    myString = std::make_unique<AutoString>(parameters, fs);
+    myString = std::make_unique<SoundString>(parameters, fs);
     myVisualString = std::make_unique<VisualString>(parameters2,fs);
     
     myString.get();
@@ -207,8 +208,6 @@ void PMA_MiniprojectAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-
-        // ..do something to the data...
         float* const channelData1 = buffer.getWritePointer(0);
         float* const channelData2 = buffer.getWritePointer(1);
             for (int i = 0; i < buffer.getNumSamples(); ++i) {
@@ -218,8 +217,6 @@ void PMA_MiniprojectAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
                 
                 myVisualString->processScheme();
                 myVisualString->updateStates();
-                
-
                 
                 out = myString->getOutput(outPos);
 
@@ -341,7 +338,7 @@ float PMA_MiniprojectAudioProcessor::limit(float input) {
 }
 
 void PMA_MiniprojectAudioProcessor::timerCallback() {
-    outPutParam->operator=(myString->getOutput(outPos)*30.f);
+    outPutParam->operator=(((myString->getOutput(outPos) * 0.5f ) + 0.5f));
     midiHandling.setVelocity(myString->getOutput(outPos)*100.f);
     
 //    midiOut.sendMessageNow(midiHandling);

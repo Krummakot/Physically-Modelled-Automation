@@ -8,7 +8,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "AutoString.hpp"
+#include "SoundString.hpp"
 
 //==============================================================================
 PMA_MiniprojectAudioProcessorEditor::PMA_MiniprojectAudioProcessorEditor (PMA_MiniprojectAudioProcessor& p)
@@ -144,10 +144,7 @@ void PMA_MiniprojectAudioProcessorEditor::paint (juce::Graphics& g)
         outputPosLabel.setJustificationType(Justification::centred);
         outputPosLabel.setColour(Label::textColourId, textColour);
         addAndMakeVisible(outputPosLabel);
-        
-        g.setColour(juce::Colours::black);
-        g.drawEllipse((float)getWidth()*0.4, (float)getHeight()*0.6, 4.f, 4.f, 2.f);
-        
+
         // TENSION SLIDER
         tensionSlider.addListener(this);
         tensionSlider.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
@@ -220,7 +217,6 @@ void PMA_MiniprojectAudioProcessorEditor::sliderValueChanged(Slider * slider) {
     
     if(slider == & exciteWidthSlider) {
         audioProcessor.setWidth(exciteWidthSlider.getValue());
-        audioProcessor.updateStringClassCoefficients();
     }
     
     if(slider == & s0DampingSlider) {
